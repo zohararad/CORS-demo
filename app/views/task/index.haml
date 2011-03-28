@@ -1,0 +1,18 @@
+%h1 Things to do
+- form_tag '/task/new', :id => 'add_task_form', :method => 'post' do
+  %p.form_row
+    = label_tag :task
+    = text_field_tag :task, :id => 'task'
+    = submit_tag "Add Task", :id => 'add_task'
+%div#tasks
+  %ul#tasks_list
+  :plain
+    <!--[if gte IE 7 ]><!-->
+  %a#sync_remote{:title => 'Sync to Server'} Sync to Server
+  %span#status &nbsp;
+  :plain
+    <!--<![endif]-->
+:javascript
+  window.addEvent('domready',function(){
+    window.tasks = new Tasks();
+  })
